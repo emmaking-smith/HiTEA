@@ -15,7 +15,7 @@ The datasets will not be released until the manuscript is accepted.
 
 ## Dependencies
 All code is run on python 3.7 and R 3.4.4.
-### Python Dependencies
+Python Dependencies:
 * scikitlearn==1.0.1
 * numpy==1.21.1
 * pandas==1.3.4
@@ -25,3 +25,7 @@ All code is run on python 3.7 and R 3.4.4.
 * [adjustText](https://github.com/Phlya/adjustText)
 * IPython==7.29.0
 * re==2.2.1
+R Dependencies:
+* data.table==1.12.2
+* mltools==0.3.5
+* stringi==1.4.3
