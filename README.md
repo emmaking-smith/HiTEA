@@ -15,21 +15,13 @@ The datasets will not be released until the manuscript is accepted.
 
 ## Dependencies
 All code is run on python 3.7 and R 3.4.4.
-
-• scikitlearn==1.0.1
-
-• numpy==1.21.1
-
-• pandas==1.3.4
-
-• rdkit==2020.09.01
-
-• matplotlib==3.3.4
-
-• mols2grid==0.1.0
-
-• [adjustText] (https://github.com/Phlya/adjustText)
-
-• IPython==7.29.0
-
-• re==2.2.1
+### Python Dependencies
+* scikitlearn==1.0.1
+* numpy==1.21.1
+* pandas==1.3.4
+* rdkit==2020.09.01
+* matplotlib==3.3.4
+* mols2grid==0.1.0
+* [adjustText](https://github.com/Phlya/adjustText)
+* IPython==7.29.0
+* re==2.2.1
