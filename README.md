@@ -29,3 +29,6 @@ All code is run on python 3.7 and R 3.4.4.
 * data.table==1.12.2
 * mltools==0.3.5
 * stringi==1.4.3
+
+## License:
+MIT License
