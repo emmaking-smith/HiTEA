@@ -1,30 +1,51 @@
 # HiTEA
-The High Throughput Experimentation Analyzer (HiTEA) modules as described in King-Smith et al.
+The High Throughput Experimentation Analyzer (HiTEA) modules as described in King-Smith *et al.*
+Please note: Analysis for the manuscript was performed with the R modules (.R files in R_modules directory) however, python modules for ANOVA, Tukey, and Random Forest tests are also provided. Given the differences between implementations of 2-way ANOVA and Tukey HSD in R and python, some minor differences may be observed.
 
-## Workflow
-1. The workflow begins with the cleanup of a dataset as laid out in Example_Dataset_Cleanup.ipynb
-2. Tanimoto Heatmaps are generated as laid out in Tanimoto_Heatmap.ipynb
-3. Minor cleanup and one-hot encoding is performed as described in the Buchwald.R / Ullmann.R / Hetero_hydrogenation.R / Homo_hydrogenation.R
-Note that these files are a compilation of numerous modules. The user should manually run the modules of interest. There are commented headings within the R files to assist in understanding which set of code and functions a user may be interested in running.
-3. Random Forest variable importances are calculated as laid out in Random_Forest_Importances.ipynb
-4. ANOVA-Tukey is then performed as described in Buchwald.R / Ullmann.R / Hetero_hydrogenation.R / Homo_hydrogenation.R
-5. PCA of the ligands is performed as described in Example_Ligand_PCA.ipynb
+## Installing Juypter Notebook
+Some modules (.ipynb) files are jupyter notebook files and require installation of jupyter lab. See the [official website] (https://jupyter.org/install) for details of installation and running a notebook.
+
+## Modules of HiTEA
+HiTEA is made up of several modules that can be used on their own or in conjuction with one another.
+Before any analysis can be performed, the dataset(s) must be cleaned. An example of how to accomplish this is laid out in Example_Dataset_Cleanup.ipynb.
+
+### Variable Importances
+Each of the four datasets described in the manuscript have their own specific module, denoted as `Random_Forest_XX.py` where `XX` is the type of reaction being analyzed. All random forest modules can be run with default parameters, however, specific arguments can be passed. For example:
+
+`python Random_Forest_Buchwald.py -d {PATH_TO_YOUR_DATASET} -s {PATH_TO_DESIRED_SAVE_DIRECTORY} -t {SPECIFIC_YEAR_TO_ANALYZE} -n {REMOVE 0% YIELDING REACTIONS TRUE / FALSE}`
+
+Specifiying a `-t` argument yields a temporal analysis of that specific year, and specifying `-n` as `True` yields the analysis of the dataset without its 0% yielding reactions. 
+
+The output will be saved as a csv file in the specified directory.
+
+### ANOVA-Tukey
+Similar to the variable importances, four specific modules for ANOVA-Tukey analysis are provided denoted as `ANOVA_Tukey_XX.py` where `XX` is the type of reaction being analyzed. Again, all modules can be run with default parameters, with temporal analysis or no 0% yielding reaction analysis performed with the relevant flags. For example:
+
+`python ANOVA_Tukey_Buchwald.py -d {PATH_TO_YOUR_DATASET} -s {PATH_TO_DESIRED_SAVE_DIRECTORY} -t {SPECIFIC_YEAR_TO_ANALYZE} -n {REMOVE 0% YIELDING REACTIONS TRUE / FALSE}`
+
+The output will be saved as a csv file in the specified directory.
+
+### Visualizing the Chemical Space
+Two modules are provided for visualizing the chemical space. These are Example_Ligand_PCA.ipynb and Tanimoto_Heatmap.ipynb which visualize the ligand space and reactant space, respectively.
 
 ## Important Note on Datasets
 The datasets will not be released until the manuscript is accepted.
 
 ## Dependencies
-All code is run on python 3.7 and R 3.4.4.
+All code has been tested on python 3.7 and R 3.4.4.
 #### Python Dependencies:
-* scikitlearn==1.0.1
-* numpy==1.21.1
-* pandas==1.3.4
-* rdkit==2020.09.01
-* matplotlib==3.3.4
-* mols2grid==0.1.0
-* [adjustText](https://github.com/Phlya/adjustText)
-* IPython==7.29.0
-* re==2.2.1
+Install the following dependencies with: `pip install X` where `X` is the name as written below.
+* scikit-learn
+* numpy
+* pandas
+* matplotlib
+* mols2grid
+* adjustText see [here](https://github.com/Phlya/adjustText) for GitHub repo.
+* ipython
+
+Install RDKit with conda:
+`conda install -c rdkit rdkit`
+
 #### R Dependencies:
 * data.table==1.12.2
 * mltools==0.3.5
