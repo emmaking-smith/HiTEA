@@ -26,7 +26,7 @@ Similar to the variable importances, four specific modules for ANOVA-Tukey analy
 The output will be saved as a csv file in the specified directory.
 
 ### Visualizing the Chemical Space
-Two modules are provided for visualizing the chemical space. These are Example_Ligand_PCA.ipynb and Tanimoto_Heatmap.ipynb which visualize the ligand space and reactant space, respectively.
+Two modules are provided for visualizing the chemical space. These are `Example_Ligand_PCA.ipynb` and `Tanimoto_Heatmap.ipynb` which visualize the ligand space and reactant space, respectively.
 
 ## Important Note on Datasets
 The datasets will not be released until the manuscript is accepted.
