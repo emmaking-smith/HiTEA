@@ -1,9 +1,9 @@
 # HiTEA
-The High Throughput Experimentation Analyzer (HiTEA) modules as described in King-Smith *et al.*
+The **Hi**gh **T**hroughput **E**xperimentation **A**nalyzer (HiTEA) modules as described in King-Smith *et al.*
 Please note: Analysis for the manuscript was performed with the R modules (.R files in R_modules directory) however, python modules for ANOVA, Tukey, and Random Forest tests are also provided. Given the differences between implementations of 2-way ANOVA and Tukey HSD in R and python, some minor differences may be observed.
 
 ## Installing Juypter Notebook
-Some modules (.ipynb) files are jupyter notebook files and require installation of jupyter lab. See the [official website] (https://jupyter.org/install) for details of installation and running a notebook.
+Some modules (.ipynb) files are jupyter notebook files and require installation of jupyter lab. See the [official website](https://jupyter.org/install) for details of installation and running a notebook.
 
 ## Modules of HiTEA
 HiTEA is made up of several modules that can be used on their own or in conjuction with one another.
@@ -40,10 +40,11 @@ Install the following dependencies with: `pip install X` where `X` is the name a
 * pandas
 * matplotlib
 * mols2grid
-* adjustText see [here](https://github.com/Phlya/adjustText) for GitHub repo.
+* adjustText (see [here](https://github.com/Phlya/adjustText) for GitHub repo)
 * ipython
 
 Install RDKit with conda:
+
 `conda install -c rdkit rdkit`
 
 #### R Dependencies:
