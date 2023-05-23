@@ -7,7 +7,7 @@ Some modules (.ipynb) files are jupyter notebook files and require installation 
 
 ## Modules of HiTEA
 HiTEA is made up of several modules that can be used on their own or in conjuction with one another.
-Before any analysis can be performed, the dataset(s) must be cleaned. An example of how to accomplish this is laid out in Example_Dataset_Cleanup.ipynb.
+Before any analysis can be performed, the dataset(s) must be cleaned. An example of how to accomplish this is laid out in `Example_Dataset_Cleanup.ipynb.`
 
 ### Variable Importances
 Each of the four datasets described in the manuscript have their own specific module, denoted as `Random_Forest_XX.py` where `XX` is the type of reaction being analyzed. All random forest modules can be run with default parameters, however, specific arguments can be passed. For example:
