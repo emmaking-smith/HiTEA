@@ -1,21 +1,24 @@
-### HETEROGENEOUS HYDROGENATION ANALYSIS ###
+### HETEROGENEOUS ANOVA-TUKEY CORRELATIONS ###
 
 library(data.table)
 library(mltools)
 library(stringi)
 
-data <- read.csv('data/cleaned_datasets/hetero_hydrogenation.csv', fill = TRUE) # Your path here.
+data <- read.csv('../data/cleaned_datasets/hetero_hydrogenation.csv', fill = TRUE) # Your path here.
 data$X <- NULL
 data <- data.table(data)
 data <- data[is.na(Reaction_T) == FALSE]
 data <- data[is.na(Reaction_Time_hrs) == FALSE]
-data <- data[, .(Product_Yield_PCT_Area_UV, PRODUCT_STRUCTURE, Solvent_1_Name, Reaction_T, Reactant_1_SMILES, reactant_2_SMILES, catalyst, ligand, Reagent_1_Short_Hand)]
+data <- data[, .(Year, Product_Yield_PCT_Area_UV, PRODUCT_STRUCTURE, Solvent_1_Name, Reaction_T, Reactant_1_SMILES, reactant_2_SMILES, catalyst, ligand, Reagent_1_Short_Hand)]
 
 data <- data[Reagent_1_Short_Hand == "", Reagent_1_Short_Hand := 'None']
 data <- data[catalyst == "RaNi 4100", catalyst := "[Ni]"]
 data <- data[catalyst == "RaNi 4200", catalyst := "[Ni]"]
 
-# halide-nuc pair - pairs still dominate
+# data <- data[Year == 2018]
+# data <- data[Product_Yield_PCT_Area_UV > 0]
+
+
 for (i in 1:nrow(data)) {
   halide <- toString(data[i, Reactant_1_SMILES])
   nuc <- toString(data[i, reactant_2_SMILES])
@@ -74,64 +77,6 @@ for (prdt in unique(d[, PRODUCT_STRUCTURE])) {
   d <- zscore(d, prdt)
 }
 
-random_forest_files <- function(d){
-  d$Reactant_1_SMILES <- NULL
-  d$reactant_2_SMILES <- NULL
-  d$catalyst <- NULL
-  d$ligand <- NULL
-  d$rxn_type <- NULL
-  d$PRODUCT_STRUCTURE <- NULL
-  
-  for (i in unique(d[, rxn_type])) {
-    d <- one_hot(d)
-    
-    d_i <- d[rxn_type == i]
-    d_i <- one_hot(d_i)
-    d_i <- d_i[, rxn_type := NULL]
-    d_i <- d_i[, .SD, .SDcols = apply(d_i, 2, var) != 0] # No constant value columns.
-    n <- paste('one_hot_rxn_type_hetero_hydrog', i, sep='_')
-    n <- paste(n, 'txt', sep='.')
-    write.table(d_i, n)
-  }
-  return(0)
-}
-
-correlations <- function(d){
-  d$PRODUCT_STRUCTURE <- NULL
-  d$Reactant_1_SMILES <- NULL
-  d$reactant_2_SMILES <- NULL
-  d$catalyst <- NULL
-  d$ligand <- NULL
-  d$rxn_type <- NULL
-  
-  d <- one_hot(d)
-  
-  d <- d[, .SD, .SDcols = colSums(d) > 0] # No all zero columns.
-  coln <- colnames(d)
-  coln <- coln[coln != 'Product_Yield_PCT_Area_UV']
-  
-  rows_to_remove <- list()
-  for (i in coln){
-    for (j in coln){
-      if (i != j){
-        c <- cor(d[, c(..i)], d[, c(..j)])
-        if (abs(c) > 0.85) {
-          print(paste(i, j, 'have correlation of', c))
-          rows_to_remove <- append(rows_to_remove, i)
-          rows_to_remove <- append(rows_to_remove, j)
-        }
-      }
-    }
-  }
-  return(rows_to_remove)
-}
-
-
-correlations_of_d <- correlations(d)
-# correlations: - ALL GOOD!
-
-
-correlations_of_d <- correlations(d)
 
 #### ANOVA ON INDIVIDUAL RXN CLASSES ####
 
@@ -218,6 +163,68 @@ for (i in un_factors_dt[, factor]) {
 }
 
 write.table(hetero_alkene_top_15_outlier_cats, 'top_15_outlier_catalysts_alkene_hetero.txt')
+
+tr <- tukey$Reagent_1_Short_Hand
+tr <- as.data.frame(tr)
+tr$factor <- rownames(tr)
+tr_sig <- tr[tr[, "p adj"] < 0.05,]
+tr_sig <- data.table(tr_sig)
+
+for (i in unique(tr_sig[,factor])) {
+  
+  if (grepl("P1-t-Bu-tris", i, fixed=T) ==T) {
+    f1 <- "P1-t-Bu-tris"
+    f2 <- substr(i, nchar(f1) + 2, nchar(i))
+  }
+  
+  else if (grepl("P1-t-Bu", i, fixed=T) == T) {
+    f1 <- "P1-t-Bu"
+    f2 <- substr(i, nchar(f1) + 2, nchar(i))
+  }
+  
+  else if (grepl("P2-Et", i, fixed=T) == T) {
+    f1 <- "P2-Et"
+    f2 <- substr(i, nchar(f1) + 2, nchar(i))
+  }
+  
+  else if (grepl("P2-t-Bu", i, fixed=T) == T) {
+    f1 <- "P2-t-Bu"
+    f2 <- substr(i, nchar(f1) + 2, nchar(i))
+  }
+  
+  else if (grepl("P4-t-Bu", i, fixed=T) == T) {
+    f1 <- "P2-t-Bu"
+    f2 <- substr(i, nchar(f1) + 2, nchar(i))
+  }
+  
+  else {
+    f1 <- strsplit(i, "\\-")[[1]][1]
+    f2 <- strsplit(i, "\\-")[[1]][2]
+  }
+  
+  tr_sig[factor == i, factor_1 := f1]
+  tr_sig[factor == i, factor_2 := f2]
+  
+}
+
+r_un_factors <- unique(union(tr_sig[, factor_1], tr_sig[ ,factor_2]))
+
+r_un_factors_dt <- data.table(factor = as.character(), count = as.numeric())
+
+for (i in r_un_factors) {
+  n <- nrow(tr_sig[factor_1 == i]) + nrow(tr_sig[factor_2 == i])
+  r_un_factors_dt <- rbind(r_un_factors_dt, list(i, n))
+}
+
+r_un_factors_dt <- r_un_factors_dt[order(count, decreasing=T)]
+
+hetereo_alkene_top_15_outlier_r <- data.table(factor = as.character(), avg_zscore = as.numeric())
+
+for (i in r_un_factors_dt[, factor][1:15]) {
+  zscores <- dalkene[Reagent_1_Short_Hand == i, z_score]
+  avg <- mean(zscores)
+  hetereo_alkene_top_15_outlier_r <- rbind(hetereo_alkene_top_15_outlier_r, list(i, avg))
+}
 
 # DEPROTECTION
 ddeprot <- d[rxn_type == "deprotection"]
