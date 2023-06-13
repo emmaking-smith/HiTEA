@@ -16,14 +16,14 @@ Each of the four datasets described in the manuscript have their own specific mo
 
 Specifiying a `-t` argument yields a temporal analysis of that specific year, and specifying `-n` as `True` yields the analysis of the dataset without its 0% yielding reactions. 
 
-The output will be saved as a csv file in the specified directory.
+The output will be saved as a csv file in the specified directory. Note that for temporal analyses, the corresponding dataset `XX_with_time.csv` where `XX` is the type of reaction needs to be used.
 
 ### ANOVA-Tukey
 Similar to the variable importances, four specific modules for ANOVA-Tukey analysis are provided denoted as `ANOVA_Tukey_XX.py` where `XX` is the type of reaction being analyzed. Again, all modules can be run with default parameters, with temporal analysis or no 0% yielding reaction analysis performed with the relevant flags. For example:
 
 `python ANOVA_Tukey_Buchwald.py -d {PATH_TO_YOUR_DATASET} -s {PATH_TO_DESIRED_SAVE_DIRECTORY} -t {SPECIFIC_YEAR_TO_ANALYZE} -n {REMOVE 0% YIELDING REACTIONS TRUE / FALSE}`
 
-The output will be saved as a csv file in the specified directory.
+The output will be saved as a csv file in the specified directory. Note that for temporal analyses, the corresponding dataset `XX_with_time.csv` where `XX` is the type of reaction needs to be used.
 
 ### Visualizing the Chemical Space
 Two modules are provided for visualizing the chemical space. These are `Example_Ligand_PCA.ipynb` and `Tanimoto_Heatmap.ipynb` which visualize the ligand space and reactant space, respectively.
