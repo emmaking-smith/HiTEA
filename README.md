@@ -32,7 +32,7 @@ Two modules are provided for visualizing the chemical space. These are `Example_
 The datasets will not be released until the manuscript is accepted. 
 
 ***Note For Reviewers:*** 
-You should have received access to the full dataset as well as the cleaned Buchwald, Ullmann, Heterogeneous Hydrogenation, and Homogeneous Hydrogenation. Please reach out to esk34@cam.ac.uk or alpha@alpha-lee.com if this is not the case.
+You should have received access to the full dataset as well as the cleaned Buchwald, Ullmann, Heterogeneous Hydrogenation, and Homogeneous Hydrogenation datasets. Please reach out to esk34@cam.ac.uk or alpha@alpha-lee.com if this is not the case.
 
 ## Dependencies
 All code has been tested on python 3.7 and R 3.4.4.
