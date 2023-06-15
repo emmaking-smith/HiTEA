@@ -3,7 +3,7 @@ The **Hi**gh **T**hroughput **E**xperimentation **A**nalyzer (HiTEA) modules as 
 Please note: Analysis for the manuscript was performed with the R modules (.R files in R_modules directory) however, python modules for ANOVA, Tukey, and Random Forest tests are also provided. Given the differences between implementations of 2-way ANOVA and Tukey HSD in R and python, some minor differences may be observed.
 
 ## Installing Juypter Notebook
-Some modules (.ipynb) files are jupyter notebook files and require installation of jupyter lab. See the [official website](https://jupyter.org/install) for details of installation and running a notebook.
+Some modules (.ipynb) files are jupyter notebook files and require installation of jupyter lab. See the [official website](https://jupyter.org/install) for details of installation and running a notebook on your specific system.
 
 ## Modules of HiTEA
 HiTEA is made up of several modules that can be used on their own or in conjuction with one another.
@@ -29,7 +29,8 @@ The output will be saved as a csv file in the specified directory. Note that for
 Two modules are provided for visualizing the chemical space. These are `Example_Ligand_PCA.ipynb` and `Tanimoto_Heatmap.ipynb` which visualize the ligand space and reactant space, respectively.
 
 ## Important Note on Datasets
-The datasets will not be released until the manuscript is accepted.
+The datasets will not be released until the manuscript is accepted. 
+***Note For Reviewers: You should have received access to the full dataset as well as the cleaned Buchwald, Ullmann, Heterogeneous Hydrogenation and Homogeneous Hydrogenation. Please reach out to esk34[at]cam[dot]ac[dot]uk or alpha[at]alpha-lee[dot]com if this is not the case.***
 
 ## Dependencies
 All code has been tested on python 3.7 and R 3.4.4.
