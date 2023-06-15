@@ -50,7 +50,7 @@ Install RDKit with conda:
 
 `conda install -c rdkit rdkit`
 
-#### R Dependencies:
+#### R Dependencies (if using R modules):
 * data.table==1.12.2
 * mltools==0.3.5
 * stringi==1.4.3
