@@ -255,8 +255,7 @@ def standard_analysis(df, save_dir, remove_negative_rxns=False):
                     save_name = 'buchwald_' + k + '.csv'
                 rf_imp_plot(r, feat_dict, name)
                 
-                #r.to_csv(os.path.join(save_dir, save_name))
-                r.to_csv(os.path.join(save_dir, 'buchwald_' + k + '_10%_dataset_rf_importances_trial_1.csv'))
+                r.to_csv(os.path.join(save_dir, save_name))
             else:
                 print('Random forest variable importance analysis failed to find any variables of high importance.')
         else:

@@ -227,8 +227,7 @@ def main():
                             name = 'buchwald_top_15_outlier_catalysts_no_0%_yield' + '.csv'
                         else:
                             name = 'buchwald_top_15_outlier_catalysts.csv'
-                        #top_15_factor_performance.to_csv(os.path.join(save_dir, name))
-                        top_15_factor_performance.to_csv(os.path.join(save_dir, 'buchwald_10%_outlier_catalysts_trial_3.csv'))
+                        top_15_factor_performance.to_csv(os.path.join(save_dir, name))
                         print(f'Saved outlier catalyst dataframe to {os.path.join(save_dir, name)}.')
 
                     else:
@@ -261,8 +260,7 @@ def main():
                             name = 'buchwald_top_15_outlier_reagents_no_0%_yield' + '.csv'
                         else:
                             name = 'buchwald_top_15_outlier_reagents.csv'
-                        #top_15_factor_performance.to_csv(os.path.join(save_dir, name))
-                        top_15_factor_performance.to_csv(os.path.join(save_dir, 'buchwald_10%_outlier_reagents_trial_3.csv'))
+                        top_15_factor_performance.to_csv(os.path.join(save_dir, name))
                         print(f'Saved outlier reagents dataframe to {os.path.join(save_dir, name)}.')
                     else:
 
