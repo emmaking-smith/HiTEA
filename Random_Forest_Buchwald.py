@@ -308,15 +308,6 @@ def main():
     df.loc[df['Reagent_1_Short_Hand'] == 'KOPnt', ['Reagent_1_Short_Hand']] = 'KOtPn' 
     df.loc[df['Reagent_1_Short_Hand'] == 'LiOBut 1M in Hexanes', ['Reagent_1_Short_Hand']] = 'LiOBut'
 
-    ### REMOVE AFTER ALPHA   
-    
-    idxs = list(df.index)
-    to_include = 0.1
-    keep_idxs = np.random.choice(idxs, int(np.ceil(len(idxs) * to_include) ), replace=False)
-    df = df.loc[keep_idxs].reset_index(drop=True)
-    
-    ### END OF REMOVE
-    
     if time_data is not None:
         temporal_changes(df, time_data, save_dir)
     else:

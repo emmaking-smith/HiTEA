@@ -177,15 +177,6 @@ def main():
              'catalyst', 'ligand', 'Reagent_1_Short_Hand']]
     df = df.reset_index(drop=True)
     
-    ### REMOVE AFTER ALPHA   
-    print(len(df))
-    idxs = list(df.index)
-    to_include = 0.1
-    keep_idxs = np.random.choice(idxs, int(np.ceil(len(idxs) * to_include) ), replace=False)
-    df = df.loc[keep_idxs].reset_index(drop=True)
-    print(len(df))
-    ### END OF REMOVE
-    
     if len(df) > 100:
 
         # Processing the data.
