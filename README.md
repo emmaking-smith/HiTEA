@@ -2,6 +2,9 @@
 The **Hi**gh **T**hroughput **E**xperimentation **A**nalyzer (HiTEA) modules as described in King-Smith *et al.*
 Please note: Analysis for the manuscript was performed with the R modules (.R files in R_modules directory) however, python modules for ANOVA, Tukey, and Random Forest tests are also provided. Given the differences between implementations of 2-way ANOVA and Tukey HSD in R and python, some minor differences may be observed.
 
+[![DOI](https://zenodo.org/badge/552294062.svg)](https://zenodo.org/badge/latestdoi/552294062)
+
+
 ## Installing Juypter Notebook
 Some modules (.ipynb) files are jupyter notebook files and require installation of jupyter lab. See the [official website](https://jupyter.org/install) for details of installation and running a notebook on your specific system.
 
