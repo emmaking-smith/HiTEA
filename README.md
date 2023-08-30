@@ -48,6 +48,7 @@ Install the following dependencies with: `pip install X` where `X` is the name a
 * mols2grid
 * adjustText (see [here](https://github.com/Phlya/adjustText) for GitHub repo)
 * ipython
+* statsmodels
 
 Install RDKit with conda:
 
