@@ -31,11 +31,9 @@ The output will be saved as a csv file in the specified directory. Note that for
 ### Visualizing the Chemical Space
 Two modules are provided for visualizing the chemical space. These are `Example_Ligand_PCA.ipynb` and `Tanimoto_Heatmap.ipynb` which visualize the ligand space and reactant space, respectively.
 
-## Important Note on Datasets
-The datasets will not be released until the manuscript is accepted. 
+## Dataset Release
+The full dataset, `8_SEPT_APPROVED_full_dataset.csv`, has been released. You can access it in the `data` directory. Cleaned Buchwald, Ullmann, homogeneous and heterogeneous hydrogenation datasets can be found in `data/cleaned_datasets`.
 
-***Note For Reviewers:*** 
-You should have received access to the full dataset as well as the cleaned Buchwald, Ullmann, Heterogeneous Hydrogenation, and Homogeneous Hydrogenation datasets. Please reach out to esk34@cam.ac.uk or alpha@alpha-lee.com if this is not the case.
 
 ## Dependencies
 All code has been tested on python 3.7 and R 3.4.4.
