@@ -1,5 +1,5 @@
 # HiTEA
-The **Hi**gh **T**hroughput **E**xperimentation **A**nalyzer (HiTEA) modules as described in [King-Smith *et al.*](https://chemrxiv.org/engage/chemrxiv/article-details/64f74524dd1a73847f3e76e8)
+The **Hi**gh **T**hroughput **E**xperimentation **A**nalyzer (HiTEA) modules from Probing the Chemical "Reactome" with High Throughput Experimentation Data as described in [King-Smith *et al.*](https://chemrxiv.org/engage/chemrxiv/article-details/64f74524dd1a73847f3e76e8)
 Please note: Analysis for the manuscript was performed with the R modules (.R files in R_modules directory) however, python modules for ANOVA, Tukey, and Random Forest tests are also provided. Given the differences between implementations of 2-way ANOVA and Tukey HSD in R and python, some minor differences may be observed.
 
 [![DOI](https://zenodo.org/badge/552294062.svg)](https://zenodo.org/badge/latestdoi/552294062)
